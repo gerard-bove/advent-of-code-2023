@@ -5,8 +5,6 @@ const redCubes = 12;
 const greenCubes = 13;
 const blueCubes = 14;
 
-let counter = 0;
-
 const splitIntoSets = data.map(game => game.split("; "))
 
 function isPossible(game) {
@@ -25,10 +23,11 @@ function isPossible(game) {
     return isPossible;
 }
 
-splitIntoSets.forEach((game, index) => {
+const result = splitIntoSets.reduce((accumulator, game, index) => {
     if (isPossible(game)) {
-        counter += index+1;
+        accumulator += index+1;
     }
-})
+    return accumulator
+}, 0)
 
-console.log("RESULT: ", counter)
+console.log("RESULT: ", result)
